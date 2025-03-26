@@ -1,16 +1,22 @@
 function login() {
-    // Hardcoded credentials
-    const correctUsername = "admin";
-    const correctPassword = "1234";
+    // Define credentials
+    const users = {
+        admin: "admin123",
+        customer: "customer123"
+    };
 
-    // Get user input
+    // Get input values
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let errorMessage = document.getElementById("error-message");
 
-    if (username === correctUsername && password === correctPassword) {
-        // Redirect to hello.html
-        window.location.href = "hello.html";
+    if (users[username] && users[username] === password) {
+        // Redirect based on user type
+        if (username === "admin") {
+            window.location.href = "admin.html"; // Redirect to admin page
+        } else if (username === "customer") {
+            window.location.href = "customer.html"; // Redirect to customer page
+        }
     } else {
         errorMessage.textContent = "Invalid username or password!";
     }
